@@ -54,6 +54,14 @@ def open_mood_window(): # Function to open the mood window
 
     tk.Button(mood_window, text="Save Mood", command=lambda: save_mood(mood_entry.get())).pack(pady=5) # Create a button to save the mood
 
+def show_history():
+    moods = load_moods()
+    if not moods:
+        messagebox.showinfo("Mood History", "No moods saved yet.")
+    else:
+        history = "\n".join(moods)
+        messagebox.showinfo("Mood History", history)
+
 root = tk.Tk() # Create the main window
 root.title("Mood Tracker Login") # Set the title of the window
 
@@ -62,6 +70,7 @@ password_entry = tk.Entry(root, show="*") # Create an entry field for the passwo
 password_entry.pack(pady=20) # Add padding around the entry field
 tk.Button(root, text="Set Password", command=set_password).pack(pady=5) # Create a button to set the password
 tk.Button(root, text="Login", command=check_password).pack(pady=5) # Create a button to check the password
+tk.Button(root, text="View Mood History", command=show_history).pack(pady=5)
 
 root.mainloop() # Start the main loop of the GUI
 # This code creates a simple GUI application using tkinter that allows the user to set and check a password.
