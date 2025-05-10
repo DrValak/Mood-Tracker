@@ -75,4 +75,4 @@ For real-world applications, use strong encryption like AES-GCM.
 
 ## Author
 
-Fabio Machado
+Valak
