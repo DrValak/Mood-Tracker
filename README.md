@@ -1,56 +1,75 @@
-# Daily Mood Encryptor (CLI)
+# Mood Tracker GUI
 
-## Overview
-
-**Daily Mood Encryptor** is a simple tool for tracking your daily mood securely. Each entry is encrypted using Ceaser cipher and protected by a password you choose. You can add new mood entries.
+A simple password-protected mood tracker built with Python and Tkinter.  
+Your moods are encrypted and stored locally, and you can view your mood history at any time.
 
 ---
 
 ## Features
 
-- **Add Entry:**  
-  - Prompts for a mood rating (1–10) and an optional note.
-  - Asks for your password at launch.
-  - Encrypts and appends the entry (with timestamp) to a local file.
-- **View Entries:**  
-  - Prompts for your password, decrypts, and displays all entries in plain text.
-- **Simple Encryption:**  
-  - Uses a Caesar cipher for basic encryption.
-  - Each entry is encrypted with a fixed key.
+- **Password Protection:**  
+  Set and check a password to access your mood tracker.
+
+- **Encrypted Mood Storage:**  
+  Each mood entry (1-10) is encrypted before being saved to disk.
+
+- **Mood History:**  
+  View your full (decrypted) mood history in the app.
+
+- **Simple GUI:**  
+  User-friendly interface built with Tkinter.
 
 ---
 
 ## How It Works
 
-- **File Format:**  
-  Each line in the data file contains:  
-  - Numeric mood number.
+1. **Set Password:**  
+   - Enter a password and click "Set Password".  
+   - The password is encrypted and saved locally.
 
-- **Encryption:**  
-  - When adding an entry, the program generates a random IV.
-  - The entry (timestamp, rating, note) is encrypted with AES-GCM using your password-derived key.
-  - The IV, ciphertext, and authentication tag are stored.
+2. **Login:**  
+   - Enter your password and click "Login".  
+   - If correct, you can add your mood for today.
 
-- **Decryption:**  
-  - On `view`, you enter your password.
-  - The program derives the key, reads each line, and decrypts the entries for display.
+3. **Add Mood:**  
+   - Enter a number from 1 (terrible) to 10 (fantastic) and save it.  
+   - The mood is encrypted and appended to `mood.txt`.
 
----
-
-## Usage
-
-### 1. Add a Mood Entry
-
-- Enter your password (used to encrypt/decrypt your data).
-- Enter your mood rating (1–10).
-
-### 2. View Mood History
-
-- Enter your password.
-- All past entries are decrypted and shown in plain text.
+4. **View Mood History:**  
+   - Click "View Mood History" to see all your past moods (decrypted).
 
 ---
 
+## File Structure
+
+- `test.py` — Main GUI application.
+- `cryptography.py` — Functions for encrypting and decrypting data.
+- `mood.py` — Functions for saving and loading moods.
+
+---
+
+## Requirements
+
+- Python 3.x
+- Tkinter (included with most Python installations)
+
+---
+
+## How to Run
+
+1. Clone or download this repository.
+2. Make sure all `.py` files are in the same folder.
+3. Run the app:
+    ```sh
+    python3 test.py
+    ```
+
+---
+
+## Security Note
+
+This project uses a simple Caesar cipher for demonstration purposes.  
+For real-world applications, use strong encryption like AES-GCM.
 
 ---
 
